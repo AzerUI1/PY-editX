@@ -172,7 +172,7 @@ class EditX:
         """Save the current file"""
         if self.current_file:
             try:
-                content = self.text_area.get(1.0, tk.END)
+                content = self.text_area.get(1.0, 'end-1c')
                 with open(self.current_file, 'w', encoding='utf-8') as file:
                     file.write(content)
                 
@@ -198,7 +198,7 @@ class EditX:
         
         if file_path:
             try:
-                content = self.text_area.get(1.0, tk.END)
+                content = self.text_area.get(1.0, 'end-1c')
                 with open(file_path, 'w', encoding='utf-8') as file:
                     file.write(content)
                 
