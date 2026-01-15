@@ -156,11 +156,14 @@ void editorUpdateRow(erow *row) {
 void editorInsertRow(int at, char *s, size_t len) {
     if (at < 0 || at > E.numrows) return;
     
-    E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
+    erow *new_row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
+    if (!new_row) return;
+    E.row = new_row;
     memmove(&E.row[at + 1], &E.row[at], sizeof(erow) * (E.numrows - at));
     
     E.row[at].size = len;
     E.row[at].chars = malloc(len + 1);
+    if (!E.row[at].chars) return;
     memcpy(E.row[at].chars, s, len);
     E.row[at].chars[len] = '\0';
     E.numrows++;
@@ -181,7 +184,9 @@ void editorDelRow(int at) {
 
 void editorRowInsertChar(erow *row, int at, int c) {
     if (at < 0 || at > row->size) at = row->size;
-    row->chars = realloc(row->chars, row->size + 2);
+    char *new_chars = realloc(row->chars, row->size + 2);
+    if (!new_chars) return;
+    row->chars = new_chars;
     memmove(&row->chars[at + 1], &row->chars[at], row->size - at + 1);
     row->size++;
     row->chars[at] = c;
@@ -189,7 +194,9 @@ void editorRowInsertChar(erow *row, int at, int c) {
 }
 
 void editorRowAppendString(erow *row, char *s, size_t len) {
-    row->chars = realloc(row->chars, row->size + len + 1);
+    char *new_chars = realloc(row->chars, row->size + len + 1);
+    if (!new_chars) return;
+    row->chars = new_chars;
     memcpy(&row->chars[row->size], s, len);
     row->size += len;
     row->chars[row->size] = '\0';
@@ -265,6 +272,10 @@ char *editorRowsToString(int *buflen) {
 void editorOpen(char *filename) {
     free(E.filename);
     E.filename = strdup(filename);
+    
+    if (!E.filename) {
+        die("strdup");
+    }
     
     FILE *fp = fopen(filename, "r");
     if (!fp) {
