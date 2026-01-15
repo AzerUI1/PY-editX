@@ -163,7 +163,11 @@ void editorInsertRow(int at, char *s, size_t len) {
     
     E.row[at].size = len;
     E.row[at].chars = malloc(len + 1);
-    if (!E.row[at].chars) return;
+    if (!E.row[at].chars) {
+        /* Revert the row array change to maintain consistency */
+        memmove(&E.row[at], &E.row[at + 1], sizeof(erow) * (E.numrows - at));
+        return;
+    }
     memcpy(E.row[at].chars, s, len);
     E.row[at].chars[len] = '\0';
     E.numrows++;
@@ -258,6 +262,7 @@ char *editorRowsToString(int *buflen) {
     *buflen = totlen;
     
     char *buf = malloc(totlen);
+    if (!buf) return NULL;
     char *p = buf;
     for (j = 0; j < E.numrows; j++) {
         memcpy(p, E.row[j].chars, E.row[j].size);
@@ -305,6 +310,11 @@ void editorSave() {
     
     int len;
     char *buf = editorRowsToString(&len);
+    
+    if (!buf) {
+        editorSetStatusMessage("Can't save! Out of memory");
+        return;
+    }
     
     int fd = open(E.filename, O_RDWR | O_CREAT, 0644);
     if (fd != -1) {
