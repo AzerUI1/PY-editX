@@ -17,13 +17,6 @@
 
 ---
 
-## Preview
-<p align="center">
-  <img src="https://via.placeholder.com/900x450/1e1e1e/ffffff?text=Simple+Python+Text+Editor+Preview" width="85%" />
-</p>
-
----
-
 ## Features
 - Open text files
 - Edit text with a clean UI
@@ -118,24 +111,6 @@ Inside your repo:
 ```bash
 python text_editor.py
 ```
-
----
-
-## Screenshot
-
-<p align="center">
-  <img src="https://via.placeholder.com/900x400/000000/FFFFFF?text=Text+Editor+Window" width="85%" />
-</p>
-
----
-
-## Demo Button
-
-<p align="center">
-  <a href="https://github.com/AzerU11">
-    <img src="https://img.shields.io/badge/View_Repository-Click_Here-6f42c1?style=for-the-badge" />
-  </a>
-</p>
 
 ---
 
