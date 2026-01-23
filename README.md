@@ -40,12 +40,12 @@ Your repo should look like this:
 
 ```
 
-📦 Simple-Python-Text-Editor
-┣ 📜 text_editor.py
-┣ 📜 text_editor.1
-┣ 📜 README.md
-┣ 📜 LICENSE
-┗ 📜 .gitignore
+ Simple-Python-Text-Editor
+┣ text_editor.py
+┣ text_editor.1
+┣ README.md
+┣ LICENSE
+┗ .gitignore
 
 ````
 
@@ -141,7 +141,7 @@ python text_editor.py
 
 ## License
 
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the BSD-3-Clause license License — see the LICENSE file for details.
 
 ---
 
@@ -158,4 +158,3 @@ If you like this project, please star the repo.
     <img src="https://img.shields.io/badge/GitHub-AzerU11-000000?style=for-the-badge&logo=github" />
   </a>
 </p>
-```
