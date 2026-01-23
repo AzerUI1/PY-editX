@@ -1,0 +1,3 @@
+sudo cp text_editor.1 /usr/share/man/man1/
+sudo mandb
+man text_editor
