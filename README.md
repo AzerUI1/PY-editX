@@ -1,6 +1,6 @@
 
 
-```html
+
 <h1 align="center"> Simple Python Text Editor (Tkinter)</h1>
 
 <p align="center">
@@ -159,9 +159,3 @@ If you like this project, please star the repo.
   </a>
 </p>
 ```
-
-If you give me your **real repository link**, I will replace:
-
-* the Demo Button URL
-* the title to match repo name
-* the project structure folder name
