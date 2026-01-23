@@ -1,7 +1,5 @@
 
 
-Here’s a clean **README.md** in that exact style (copy-paste):
-
 ```html
 <h1 align="center"> Simple Python Text Editor (Tkinter)</h1>
 
